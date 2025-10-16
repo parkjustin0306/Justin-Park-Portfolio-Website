@@ -9,16 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --dark-teal: #1a3c40;
-            --teal: #2d5d5f;
-            --light-teal: #3a7c7f;
-            --accent: #4da1a9;
-            --accent-light: #6bc5ce;
-            --dark: #1a1f2b;
-            --dark-gray: #2d3748;
-            --gray: #4a5568;
-            --light-gray: #718096;
-            --light: #f7fafc;
+            --dark: #2E3047;
+            --accent: #3BBA9C;
+            --medium: #43455C;
+            --light-gray: #707793;
+            --light: #3C3F58;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -33,16 +28,16 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark-teal) 0%, var(--dark) 100%);
-            color: var(--light);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--light) 100%);
+            color: white;
             line-height: 1.6;
             overflow-x: hidden;
             transition: var(--transition);
         }
 
         body.white-mode {
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
-            color: var(--dark-gray);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark);
         }
 
         .container {
@@ -59,15 +54,15 @@
             width: 100%;
             z-index: 1000;
             padding: 20px 0;
-            background: rgba(26, 60, 64, 0.85);
+            background: rgba(46, 48, 71, 0.85);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(77, 161, 169, 0.2);
+            border-bottom: 1px solid rgba(59, 186, 156, 0.2);
             transition: var(--transition);
         }
 
         body.white-mode nav {
-            background: rgba(247, 250, 252, 0.85);
-            border-bottom: 1px solid rgba(45, 93, 95, 0.2);
+            background: rgba(248, 250, 252, 0.85);
+            border-bottom: 1px solid rgba(59, 186, 156, 0.2);
         }
 
         nav .container {
@@ -79,7 +74,7 @@
         .logo {
             font-size: 22px;
             font-weight: 700;
-            color: var(--light);
+            color: white;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -92,7 +87,7 @@
         }
 
         body.white-mode .logo {
-            color: var(--dark-gray);
+            color: var(--dark);
         }
 
         /* Desktop Navigation */
@@ -105,7 +100,7 @@
 
         .nav-desktop a {
             text-decoration: none;
-            color: var(--light);
+            color: white;
             font-size: 16px;
             font-weight: 500;
             position: relative;
@@ -114,7 +109,7 @@
         }
 
         body.white-mode .nav-desktop a {
-            color: var(--dark-gray);
+            color: var(--dark);
         }
 
         /* Sweeping underline animation */
@@ -225,16 +220,19 @@
             display: none;
         }
 
-        /* About Page */
+        /* About Page - IMPROVED LAYOUT */
         .about-content {
             display: flex;
             flex-direction: column;
-            gap: 80px;
+            gap: 60px;
         }
 
         .intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -268,11 +266,12 @@
         }
 
         .intro h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--light-teal) 100%);
+            background: linear-gradient(90deg, var(--accent) 0%, #4fd1c7 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
         }
@@ -280,18 +279,51 @@
         .intro .subtitle {
             font-size: 1.5rem;
             opacity: 0.8;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
             font-weight: 400;
+            min-height: 1.5em;
+        }
+
+        /* Location Typing Animation */
+        .location-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .location-text {
+            display: inline;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         .intro-text {
-            background: rgba(45, 93, 95, 0.3);
+            background: rgba(67, 69, 92, 0.3);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             transition: var(--transition);
+            max-width: 800px;
+            margin-top: 0px;
         }
 
         body.white-mode .intro-text {
@@ -307,6 +339,46 @@
 
         .intro-text p:last-child {
             margin-bottom: 0;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 5px;
+        }
+
+        .detail-card {
+            background: rgba(67, 69, 92, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(59, 186, 156, 0.3);
+            transition: var(--transition);
+        }
+
+        body.white-mode .detail-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(113, 128, 150, 0.3);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-card h3 i {
+            font-size: 1.2rem;
         }
 
         .contact-info {
@@ -338,25 +410,24 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-left: 27px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
-            color: var(--light);
+            color: white;
             text-decoration: none;
-            background: rgba(45, 93, 95, 0.4);
+            background: rgba(67, 69, 92, 0.4);
             padding: 12px 24px;
             border-radius: 50px;
             transition: var(--transition);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             position: relative;
             overflow: hidden;
         }
 
         body.white-mode .social-link {
-            color: var(--dark-gray);
+            color: var(--dark);
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(113, 128, 150, 0.3);
         }
@@ -380,7 +451,7 @@
         }
 
         .social-link:hover {
-            background: var(--teal);
+            background: var(--medium);
             transform: translateY(-3px);
             box-shadow: var(--shadow);
             color: white;
@@ -444,12 +515,12 @@
         }
 
         .project-card {
-            background: rgba(45, 93, 95, 0.3);
+            background: rgba(67, 69, 92, 0.3);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             transition: var(--transition);
             height: 100%;
             display: flex;
@@ -468,7 +539,7 @@
 
         .project-header {
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(77, 161, 169, 0.3);
+            border-bottom: 1px solid rgba(59, 186, 156, 0.3);
             padding-bottom: 15px;
         }
 
@@ -479,19 +550,19 @@
         .project-title {
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--light);
+            color: white;
             margin-bottom: 8px;
         }
 
         body.white-mode .project-title {
-            color: var(--dark-gray);
+            color: var(--dark);
         }
 
         .project-category {
             display: inline-block;
             font-size: 0.9rem;
             background: var(--accent);
-            color: var(--light);
+            color: white;
             padding: 4px 12px;
             border-radius: 20px;
             font-weight: 500;
@@ -546,7 +617,7 @@
         }
 
         .tech-tag {
-            background: rgba(77, 161, 169, 0.2);
+            background: rgba(59, 186, 156, 0.2);
             color: var(--accent);
             padding: 4px 10px;
             border-radius: 20px;
@@ -555,8 +626,8 @@
         }
 
         body.white-mode .tech-tag {
-            background: rgba(113, 128, 150, 0.2);
-            color: var(--gray);
+            background: rgba(59, 186, 156, 0.2);
+            color: var(--accent);
         }
 
         .project-links {
@@ -600,7 +671,7 @@
 
         .project-link:hover {
             background: var(--accent);
-            color: var(--light);
+            color: white;
             transform: translateY(-2px);
         }
 
@@ -617,12 +688,12 @@
         }
 
         .skill-category {
-            background: rgba(45, 93, 95, 0.3);
+            background: rgba(67, 69, 92, 0.3);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             transition: var(--transition);
         }
 
@@ -667,15 +738,13 @@
             gap: 30px;
         }
 
-
-
         .experience-card {
-            background: rgba(45, 93, 95, 0.3);
+            background: rgba(67, 69, 92, 0.3);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             transition: var(--transition);
             height: 100%;
         }
@@ -693,12 +762,13 @@
         .experience-name {
             font-size: 1.4rem;
             font-weight: 600;
+            margin-top: 0px;
             margin-bottom: 5px;
-            color: var(--light);
+            color: white;
         }
 
         body.white-mode .experience-name {
-            color: var(--dark-gray);
+            color: var(--dark);
         }
 
         .experience-role {
@@ -718,7 +788,7 @@
             font-size: 0.9rem;
             opacity: 0.8;
             font-style: italic;
-            border-top: 1px solid rgba(77, 161, 169, 0.3);
+            border-top: 1px solid rgba(59, 186, 156, 0.3);
             padding-top: 15px;
             margin-top: 15px;
         }
@@ -736,19 +806,22 @@
 
         .contact-methods {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.2fr 1.2fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 50px;
+            justify-items: center;
         }
 
         .contact-method {
-            background: rgba(45, 93, 95, 0.3);
+            background: rgba(67, 69, 92, 0.3);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 40px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
             transition: var(--transition);
+            width: 100%;
+            max-width: 280px;
         }
 
         body.white-mode .contact-method {
@@ -758,11 +831,11 @@
 
         .contact-method:hover {
             transform: translateY(-5px);
-            background: rgba(58, 124, 127, 0.2);
+            background: rgba(67, 69, 92, 0.2);
         }
 
         body.white-mode .contact-method:hover {
-            background: rgba(113, 128, 150, 0.2);
+            background: rgba(112, 119, 147, 0.2);
         }
 
         .contact-method i {
@@ -810,7 +883,7 @@
         }
 
         .contact-link:hover {
-            color: var(--accent-light);
+            color: #4fd1c7;
         }
 
         /* Footer */
@@ -822,17 +895,17 @@
             opacity: 0.7;
             transition: var(--transition);
             z-index: 998;
-            background: rgba(26, 60, 64, 0.7);
+            background: rgba(46, 48, 71, 0.7);
             backdrop-filter: blur(10px);
             padding: 8px 16px;
             border-radius: 20px;
-            border: 1px solid rgba(77, 161, 169, 0.3);
+            border: 1px solid rgba(59, 186, 156, 0.3);
         }
 
         body.white-mode footer {
-            color: var(--dark-gray);
-            background: rgba(247, 250, 252, 0.7);
-            border: 1px solid rgba(113, 128, 150, 0.3);
+            color: var(--dark);
+            background: rgba(248, 250, 252, 0.7);
+            border: 1px solid rgba(59, 186, 156, 0.3);
         }
 
         /* Responsive Design */
@@ -850,11 +923,15 @@
             }
 
             .intro h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
 
             .intro .subtitle {
                 font-size: 1.2rem;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
             }
 
             .project-grid {
@@ -869,8 +946,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-methods {
-                grid-template-columns: 1fr;
+            @media (max-width: 768px) {
+                .contact-methods {
+                    grid-template-columns: 1fr;
+                    max-width: 400px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
 
             footer {
@@ -882,11 +964,11 @@
 
         @media (max-width: 480px) {
             .intro h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .profile-image {
@@ -934,12 +1016,12 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: var(--light);
+            background-color: white;
             transition: var(--transition);
         }
 
         body.white-mode .hamburger span {
-            background-color: var(--dark-gray);
+            background-color: var(--dark);
         }
 
         .hamburger.active span:nth-child(1) {
@@ -960,7 +1042,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(26, 60, 64, 0.98);
+            background: rgba(46, 48, 71, 0.98);
             backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
@@ -972,7 +1054,7 @@
         }
 
         body.white-mode .mobile-menu {
-            background: rgba(247, 250, 252, 0.98);
+            background: rgba(248, 250, 252, 0.98);
         }
 
         .mobile-menu.active {
@@ -989,7 +1071,7 @@
         }
 
         .mobile-menu a {
-            color: var(--light);
+            color: white;
             text-decoration: none;
             font-size: 24px;
             font-weight: 300;
@@ -1000,7 +1082,7 @@
         }
 
         body.white-mode .mobile-menu a {
-            color: var(--dark-gray);
+            color: var(--dark);
         }
 
         /* Sweeping underline for mobile menu */
@@ -1030,6 +1112,9 @@
 
         .mobile-theme-toggle {
             margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -1044,7 +1129,7 @@
     </style>
 </head>
 
-<body class="white-mode">
+<body>
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -1123,7 +1208,7 @@
         </div>
     </nav>
 
-    <!-- About Page -->
+    <!-- About Page - IMPROVED LAYOUT -->
     <section id="about" class="page active">
         <div class="container">
             <div class="about-content">
@@ -1134,14 +1219,24 @@
                         </div>
                         <div>
                             <h1>Justin Park</h1>
-                            <p class="subtitle">HCC Student | Web Developer</p>
+                            <p class="subtitle">
+                                <span class="location-container">
+                                    HCC Student | Web Developer
+                                </span>
+                            </p>
+                            <p class="subtitle">
+                                <span class="location-container">
+                                    <span class="location-text" id="location-text"></span><span class="cursor"
+                                        id="cursor"></span>
+                                </span>
+                            </p>
                         </div>
                     </div>
 
                     <div class="intro-text">
                         <p>
-                            Second year student pursuing a BS in Human Centered Computing at Rochester Institute of
-                            Technology. My interests lie in UX/UI Design, Human Centered Design, and Front-End
+                            My name is Justin, and my interests lie in UX/UI Design, Human Centered Design, and
+                            Front-End
                             Development.
                         </p>
                         <p>
@@ -1153,16 +1248,34 @@
                             accessibility,
                             and user-centered design to help make technology more intuitive and user-friendly.
                         </p>
-                        <p>
-                            When I'm not designing or developing, you'll usually find me traveling, snowboarding, 
-                            or enjoying great food and fashion. I'm passionate about design in all its forms—graphic 
-                            and product—as well as fashion, music, and creative expression. Food and style are a big 
-                            part of my life, and I often find ways to let those passions influence both my work and 
-                            everyday experiences.
-                                
-                        </p>
-                            
-                        
+                    </div>
+                </div>
+
+                <div class="about-details">
+                    <div class="detail-card">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <p>Rochester Institute of Technology<br>
+                            BS in Human Centered Computing<br>
+                            Expected Graduation: 2028</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3><i class="fas fa-bullseye"></i> Focus Areas</h3>
+                        <p>UX/UI Design<br>
+                            Front-End Development<br>
+                            Human Centered Design<br>
+                            Accessibility<br>
+                            Helping Others</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3><i class="fas fa-heart"></i> Interests</h3>
+                        <p>Music<br>
+                            Traveling<br>
+                            Snowboarding<br>
+                            Food & Fashion<br>
+                            Web Development<br>
+                            Graphic & UX/UI Design</p>
                     </div>
                 </div>
 
@@ -1207,14 +1320,16 @@
                             </div>
                             <div class="project-description">
                                 <p>
-                                    This website actively showcases the projects I'm currently working on, providing 
-                                    real-time updates on my latest work, ideas, and creative progress. It's a living 
-                                    portfolio that reflects my ongoing journey as a user centered designer, and developer as a 
-                                    human centered computing major.                                
+                                    This website actively showcases the projects I'm currently working on, providing
+                                    real-time updates on my latest work, ideas, and creative progress. It's a living
+                                    portfolio that reflects my ongoing journey as a user centered designer, and
+                                    developer as a
+                                    human centered computing major.
                                 </p>
                                 <ul class="project-features">
                                     <li>Short description about me, my focuses and career goals</li>
-                                    <li>Current projects I've been involved in—personal work, creative experiments, and things I'm excited to share.</li>
+                                    <li>Current projects I've been involved in—personal work, creative experiments, and
+                                        things I'm excited to share.</li>
                                     <li>Highlights current skillsets and previous experiences</li>
                                     <li>Customizable Dark & Light screen mode button</li>
                                     <li>Overall showcase of my website development skills</li>
@@ -1227,14 +1342,16 @@
                                 </div>
                             </div>
                             <div class="project-links">
-                                <a href="https://parkjustin0306.github.io/Justin-Park-Portfolio-Website/" class="project-link" target="_blank" onclick="return false;">
+                                <a href="https://parkjustin0306.github.io/Justin-Park-Portfolio-Website/"
+                                    class="project-link" target="_blank" onclick="return false;">
                                     <i class="fas fa-external-link-alt"></i>
                                     (This Website)
                                 </a>
-                                
-                                <a href="https://github.com/parkjustin0306/Justin-Park-Portfolio-Website" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> 
-                                </a>                                
+
+                                <a href="https://github.com/parkjustin0306/Justin-Park-Portfolio-Website"
+                                    class="project-link" target="_blank" rel="noopener">
+                                    <i class="fab fa-github"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -1253,8 +1370,10 @@
                                     an accessible and intuitive user experience.
                                 </p>
                                 <ul class="project-features">
-                                    <li>Improved readability with OpenDyslexic font option</li>
+                                    <li>Improved readability with multiple font options</li>
                                     <li>Customizable text spacing and color schemes</li>
+                                    <li>Magnifying glass feature</li>
+                                    <li>Color adjustable reading ruler</li>
                                     <li>Simple UI for easy website customization</li>
                                     <li>Responsive front-end components</li>
                                 </ul>
@@ -1262,6 +1381,7 @@
                                     <span class="tech-tag">HTML</span>
                                     <span class="tech-tag">CSS</span>
                                     <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Figma</span>
                                     <span class="tech-tag">Chrome Extension API</span>
                                 </div>
                             </div>
@@ -1315,7 +1435,7 @@
                     <div class="skills-section">
                         <h2 class="section-title">Skills</h2>
                         <p class="section-subtitle">Technologies and tools I work with</p>
-    
+
                         <div class="skills-grid">
                             <div class="skill-category">
                                 <h4><i class="fas fa-palette"></i> Design</h4>
@@ -1335,7 +1455,7 @@
                                     AutoCAD<br>
                                     Figma<br>
                                     Adobe Photoshop & Illustrator
-            
+
                                 </div>
                             </div>
                             <div class="skill-category">
@@ -1409,7 +1529,7 @@
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -1460,7 +1580,7 @@
 
     <!-- Footer -->
     <footer>
-        <div>2025 &copy; Justin Park</div>
+        <div>Justin Park &copy; 2025</div>
     </footer>
 
     <script>
@@ -1486,6 +1606,12 @@
                     }
                 });
 
+                // Scroll to top of the page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
                 // Close mobile menu if open
                 if (window.innerWidth <= 768) {
                     const hamburger = document.querySelector('.hamburger');
@@ -1505,7 +1631,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.project-card, .experience-card, .skill-category').forEach(item => {
+        document.querySelectorAll('.project-card, .experience-card, .skill-category, .detail-card').forEach(item => {
             observer.observe(item);
         });
 
@@ -1533,6 +1659,55 @@
                 mobileMenu.classList.toggle('active');
             });
         }
+
+        // Location typing animation - only the location part changes
+        const locations = [
+            "NJ & NY Based",
+            "Paramus, NJ",
+            "Rochester, NY"
+        ];
+
+        let locationIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let deletingSpeed = 50;
+        let pauseTime = 1500;
+
+        function typeLocation() {
+            const currentLocation = locations[locationIndex];
+            const locationElement = document.getElementById('location-text');
+
+            if (isDeleting) {
+                // Deleting text
+                locationElement.textContent = currentLocation.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = deletingSpeed;
+            } else {
+                // Typing text
+                locationElement.textContent = currentLocation.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            // Check if we've finished typing the current location
+            if (!isDeleting && charIndex === currentLocation.length) {
+                // Pause at the end of typing
+                typingSpeed = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next location after deleting
+                isDeleting = false;
+                locationIndex = (locationIndex + 1) % locations.length;
+            }
+
+            setTimeout(typeLocation, typingSpeed);
+        }
+
+        // Start the typing animation after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeLocation, 1000);
+        });
     </script>
 </body>
 
