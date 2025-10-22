@@ -1055,6 +1055,30 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .experience-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 30px !important;
+            }
+
+            .experience-card {
+                order: 0 !important;
+            }
+
+            .experience-card:nth-child(1) {
+                order: 1 !important;
+            }
+
+            .experience-card:nth-child(2) {
+                order: 2 !important;
+            }
+
+            .experience-card:nth-child(3) {
+                order: 3 !important;
+            }
+        }
+
         @media (max-width: 1024px) {
             .experience-grid {
                 grid-template-columns: repeat(2, 1fr);
