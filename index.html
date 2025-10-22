@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Justin Park - Portfolio</title>
+    <title>Justin Park - Portfolio Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --dark: #2E3047;
+            --dark: #618576;
             --accent: #3BBA9C;
             --medium: #43455C;
             --light-gray: #707793;
-            --light: #3C3F58;
+            --light: #131413;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -28,16 +28,17 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--light) 100%);
-            color: white;
+            background: #465E54;
+            background: linear-gradient(150deg, rgba(70, 94, 84, 1) 0%, rgba(19, 20, 19, 1) 100%);
+            color: #b4b9b7;
             line-height: 1.6;
             overflow-x: hidden;
             transition: var(--transition);
         }
 
         body.white-mode {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            color: var(--dark);
+            background: linear-gradient(150deg, #f7f7f7 0%, #e8e8e8 100%);
+            color: #465E54;
         }
 
         .container {
@@ -54,14 +55,14 @@
             width: 100%;
             z-index: 1000;
             padding: 20px 0;
-            background: rgba(46, 48, 71, 0.85);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(59, 186, 156, 0.2);
             transition: var(--transition);
         }
 
         body.white-mode nav {
-            background: rgba(248, 250, 252, 0.85);
+            background: #f7f7f7;
             border-bottom: 1px solid rgba(59, 186, 156, 0.2);
         }
 
@@ -74,7 +75,7 @@
         .logo {
             font-size: 22px;
             font-weight: 700;
-            color: white;
+            color: #a0a0a0;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -83,11 +84,11 @@
         }
 
         .logo span {
-            color: var(--accent);
+            color: #a0a0a0;
         }
 
         body.white-mode .logo {
-            color: var(--dark);
+            color: #618576;
         }
 
         /* Desktop Navigation */
@@ -100,7 +101,7 @@
 
         .nav-desktop a {
             text-decoration: none;
-            color: white;
+            color: #a0a0a0;
             font-size: 16px;
             font-weight: 500;
             position: relative;
@@ -109,7 +110,7 @@
         }
 
         body.white-mode .nav-desktop a {
-            color: var(--dark);
+            color: #618576;
         }
 
         /* Sweeping underline animation */
@@ -120,13 +121,24 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #628576;
             transition: var(--transition);
             transform-origin: left;
         }
 
+        body.white-mode .nav-desktop a::after {
+            background: #628576;
+        }
+
         .nav-desktop a:hover::after,
         .nav-desktop a.active::after {
+            width: 100%;
+            animation: sweep 1.5s ease-in-out infinite;
+        }
+
+
+        body.white-mode .nav-desktop a:hover::after,
+        body.white-mode .nav-desktop a.active::after {
             width: 100%;
             animation: sweep 1.5s ease-in-out infinite;
         }
@@ -155,14 +167,14 @@
 
         .nav-desktop a:hover,
         .nav-desktop a.active {
-            color: var(--accent);
+            color: #a0a0a0;
         }
 
         /* Theme Toggle Button */
         .theme-toggle {
             padding: 8px;
             border-radius: 8px;
-            color: #78716c;
+            color: white;
             background: transparent;
             border: none;
             cursor: pointer;
@@ -177,7 +189,7 @@
         }
 
         body.white-mode .theme-toggle {
-            color: #a8a29e;
+            color: #618576;
         }
 
         body.white-mode .theme-toggle:hover {
@@ -225,6 +237,8 @@
             display: flex;
             flex-direction: column;
             gap: 60px;
+            transform: scale(0.9);
+            transform-origin: top center;
         }
 
         .intro {
@@ -249,14 +263,22 @@
             height: 180px;
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid var(--accent);
+            border: 4px solid #a0a0a0;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
         }
 
         .profile-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 0 4px var(--accent), var(--shadow-lg);
+            box-shadow: 0 0 0 4px #a0a0a0, var(--shadow-lg);
+        }
+
+        body.white-mode .profile-image {
+            border: 4px solid #628576;
+        }
+
+        body.white-mode .profile-image:hover {
+            box-shadow: 0 0 0 4px #628576, var(--shadow-lg);
         }
 
         .profile-image img {
@@ -269,11 +291,18 @@
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--accent) 0%, #4fd1c7 100%);
+            background: #b4b9b7;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+        }
+
+        body.white-mode .intro h1 {
+            background: #628576;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .intro .subtitle {
@@ -296,7 +325,7 @@
 
         .cursor {
             display: inline-block;
-            color: var(--accent);
+            color: #628576;
             font-weight: bold;
             margin-left: 2px;
             animation: blink 1s infinite;
@@ -315,12 +344,12 @@
         }
 
         .intro-text {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
             max-width: 800px;
             margin-top: 0px;
@@ -349,12 +378,12 @@
         }
 
         .detail-card {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
         }
 
@@ -371,7 +400,7 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: var(--accent);
+            color: #a0a0a0;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -401,7 +430,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--accent);
+            background: #a0a0a0;
             border-radius: 2px;
         }
 
@@ -410,24 +439,26 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
+            margin-top: 20px;
+            margin-left: 35px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
-            color: white;
+            color: #a0a0a0;
             text-decoration: none;
-            background: rgba(67, 69, 92, 0.4);
+            background: #364144;
             padding: 12px 24px;
             border-radius: 50px;
             transition: var(--transition);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             position: relative;
             overflow: hidden;
         }
 
         body.white-mode .social-link {
-            color: var(--dark);
+            color: #618576;
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(113, 128, 150, 0.3);
         }
@@ -440,9 +471,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #a0a0a0;
             transition: var(--transition);
             transform-origin: left;
+        }
+
+        body.white-mode .social-link::after {
+            background: #628576;
         }
 
         .social-link:hover::after {
@@ -450,21 +485,22 @@
             animation: sweep 1.5s ease-in-out infinite;
         }
 
+
         .social-link:hover {
-            background: var(--medium);
+            background: #a0a0a0;
             transform: translateY(-3px);
             box-shadow: var(--shadow);
             color: white;
         }
 
         body.white-mode .social-link:hover {
-            background: var(--light-gray);
+            background: #628576;
+            color: white;
         }
 
         .social-icon {
             font-size: 20px;
             margin-right: 10px;
-            transition: var(--transition);
         }
 
         .social-text {
@@ -484,6 +520,7 @@
             text-align: center;
             margin-bottom: 20px;
             position: relative;
+            color: #a0a0a0;
         }
 
         .section-title::after {
@@ -494,8 +531,16 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--accent);
+            background: #a0a0a0;
             border-radius: 2px;
+        }
+
+        body.white-mode .section-title {
+            color: #628576;
+        }
+
+        body.white-mode .section-title::after {
+            background: #628576;
         }
 
         .section-subtitle {
@@ -515,12 +560,12 @@
         }
 
         .project-card {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
             height: 100%;
             display: flex;
@@ -539,7 +584,7 @@
 
         .project-header {
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(59, 186, 156, 0.3);
+            border-bottom: 1px solid rgba(160, 160, 160, 0.3);
             padding-bottom: 15px;
         }
 
@@ -550,18 +595,18 @@
         .project-title {
             font-size: 1.5rem;
             font-weight: 600;
-            color: white;
+            color: #a0a0a0;
             margin-bottom: 8px;
         }
 
         body.white-mode .project-title {
-            color: var(--dark);
+            color: #618576;
         }
 
         .project-category {
             display: inline-block;
             font-size: 0.9rem;
-            background: var(--accent);
+            background: #a0a0a0;
             color: white;
             padding: 4px 12px;
             border-radius: 20px;
@@ -606,7 +651,7 @@
             content: '▹';
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: #a0a0a0;
         }
 
         .project-tech {
@@ -617,8 +662,8 @@
         }
 
         .tech-tag {
-            background: rgba(59, 186, 156, 0.2);
-            color: var(--accent);
+            background: rgba(160, 160, 160, 0.2);
+            color: #a0a0a0;
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -626,8 +671,8 @@
         }
 
         body.white-mode .tech-tag {
-            background: rgba(59, 186, 156, 0.2);
-            color: var(--accent);
+            background: rgba(160, 160, 160, 0.2);
+            color: #a0a0a0;
         }
 
         .project-links {
@@ -640,12 +685,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--accent);
+            color: #a0a0a0;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             padding: 8px 16px;
-            border: 1px solid var(--accent);
+            border: 1px solid #a0a0a0;
             border-radius: 6px;
             position: relative;
             overflow: hidden;
@@ -659,9 +704,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #a0a0a0;
             transition: var(--transition);
             transform-origin: left;
+        }
+
+        body.white-mode .project-link::after {
+            background: #628576;
         }
 
         .project-link:hover::after {
@@ -670,9 +719,14 @@
         }
 
         .project-link:hover {
-            background: var(--accent);
+            background: #a0a0a0;
             color: white;
             transform: translateY(-2px);
+        }
+
+        body.white-mode .project-link:hover {
+            background: #628576;
+            color: white;
         }
 
         /* Skills Section */
@@ -688,12 +742,12 @@
         }
 
         .skill-category {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
         }
 
@@ -710,7 +764,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: var(--accent);
+            color: #a0a0a0;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -734,17 +788,18 @@
 
         .experience-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
+            /* Changed to 3 equal columns */
             gap: 30px;
         }
 
         .experience-card {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
             height: 100%;
         }
@@ -764,16 +819,16 @@
             font-weight: 600;
             margin-top: 0px;
             margin-bottom: 5px;
-            color: white;
+            color: #a0a0a0;
         }
 
         body.white-mode .experience-name {
-            color: var(--dark);
+            color: #618576;
         }
 
         .experience-role {
             font-size: 1.1rem;
-            color: var(--accent);
+            color: #a0a0a0;
             margin-bottom: 15px;
             font-weight: 500;
         }
@@ -788,7 +843,7 @@
             font-size: 0.9rem;
             opacity: 0.8;
             font-style: italic;
-            border-top: 1px solid rgba(59, 186, 156, 0.3);
+            border-top: 1px solid rgba(160, 160, 160, 0.3);
             padding-top: 15px;
             margin-top: 15px;
         }
@@ -813,12 +868,12 @@
         }
 
         .contact-method {
-            background: rgba(67, 69, 92, 0.3);
+            background: #364144;
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 40px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
             transition: var(--transition);
             width: 100%;
             max-width: 280px;
@@ -840,7 +895,7 @@
 
         .contact-method i {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: #a0a0a0;
             margin-bottom: 15px;
         }
 
@@ -856,7 +911,7 @@
 
         .contact-link {
             display: inline-block;
-            color: var(--accent);
+            color: #a0a0a0;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
@@ -872,9 +927,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #a0a0a0;
             transition: var(--transition);
             transform-origin: left;
+        }
+
+        body.white-mode .contact-link::after {
+            background: #628576;
         }
 
         .contact-link:hover::after {
@@ -883,7 +942,24 @@
         }
 
         .contact-link:hover {
-            color: #4fd1c7;
+            color: #c0c0c0;
+        }
+
+        body.white-mode .contact-link:hover {
+            color: #628576;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            padding: 20px 0;
+        }
+
+        body.white-mode .last-updated {
+            color: #465E54;
         }
 
         /* Footer */
@@ -895,17 +971,17 @@
             opacity: 0.7;
             transition: var(--transition);
             z-index: 998;
-            background: rgba(46, 48, 71, 0.7);
+            background: rgba(70, 94, 84, 0.7);
             backdrop-filter: blur(10px);
             padding: 8px 16px;
             border-radius: 20px;
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            border: 1px solid rgba(160, 160, 160, 0.3);
         }
 
         body.white-mode footer {
-            color: var(--dark);
-            background: rgba(248, 250, 252, 0.7);
-            border: 1px solid rgba(59, 186, 156, 0.3);
+            color: #465E54;
+            background: rgba(245, 245, 240, 0.7);
+            border: 1px solid rgba(160, 160, 160, 0.3);
         }
 
         /* Responsive Design */
@@ -942,9 +1018,11 @@
                 grid-template-columns: 1fr;
             }
 
+
             .experience-grid {
                 grid-template-columns: 1fr;
             }
+
 
             @media (max-width: 768px) {
                 .contact-methods {
@@ -974,6 +1052,12 @@
             .profile-image {
                 width: 150px;
                 height: 150px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1016,12 +1100,12 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: white;
+            background-color: #d0d0d0;
             transition: var(--transition);
         }
 
         body.white-mode .hamburger span {
-            background-color: var(--dark);
+            background-color: #618576;
         }
 
         .hamburger.active span:nth-child(1) {
@@ -1042,7 +1126,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(46, 48, 71, 0.98);
+            background: rgba(70, 94, 84, 0.98);
             backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
@@ -1054,7 +1138,7 @@
         }
 
         body.white-mode .mobile-menu {
-            background: rgba(248, 250, 252, 0.98);
+            background: rgba(245, 245, 240, 0.98);
         }
 
         .mobile-menu.active {
@@ -1071,7 +1155,7 @@
         }
 
         .mobile-menu a {
-            color: white;
+            color: #a0a0a0;
             text-decoration: none;
             font-size: 24px;
             font-weight: 300;
@@ -1082,7 +1166,7 @@
         }
 
         body.white-mode .mobile-menu a {
-            color: var(--dark);
+            color: #618576;
         }
 
         /* Sweeping underline for mobile menu */
@@ -1093,9 +1177,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #a0a0a0;
             transition: var(--transition);
             transform-origin: left;
+        }
+
+        body.white-mode .mobile-menu a::after {
+            background: #628576;
         }
 
         .mobile-menu a:hover::after,
@@ -1107,7 +1195,12 @@
         .mobile-menu a:hover,
         .mobile-menu a.active {
             opacity: 1;
-            color: var(--accent);
+            color: #a0a0a0;
+        }
+
+        body.white-mode .mobile-menu a:hover,
+        body.white-mode .mobile-menu a.active {
+            color: #628576;
         }
 
         .mobile-theme-toggle {
@@ -1126,593 +1219,639 @@
                 display: block;
             }
         }
+
+        /* Light mode icons and category colors */
+        body.white-mode .detail-card h3,
+        body.white-mode .detail-card h3 i,
+        body.white-mode .project-category,
+        body.white-mode .skill-category h4,
+        body.white-mode .skill-category h4 i,
+        body.white-mode .experience-role,
+        body.white-mode .contact-method i,
+        body.white-mode .contact-link,
+        body.white-mode .project-link,
+        body.white-mode .project-features li::before,
+        body.white-mode .tech-tag {
+            color: #628576;
+        }
+
+        body.white-mode .project-category {
+            background: #628576;
+            color: white;
+        }
+
+        body.white-mode .tech-tag {
+            background: rgba(98, 133, 118, 0.2);
+        }
+
+        /* Add spinning animation for loading icon */
+        .fa-spinner {
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">
-                Justin Park's<span>Portfolio Website</span>
-            </div>
+<body class="white-mode"></body>
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <div class="logo">
+            Justin Park's<span>Portfolio Website</span>
+        </div>
 
-            <!-- Desktop Navigation -->
-            <ul class="nav-desktop">
-                <li><a href="#about" class="nav-link active">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Skills & Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li>
-                    <button class="theme-toggle" aria-label="Toggle theme">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="sun-icon">
-                            <circle cx="12" cy="12" r="4"></circle>
-                            <path d="M12 2v2"></path>
-                            <path d="M12 20v2"></path>
-                            <path d="m4.93 4.93 1.41 1.41"></path>
-                            <path d="m17.66 17.66 1.41 1.41"></path>
-                            <path d="M2 12h2"></path>
-                            <path d="M20 12h2"></path>
-                            <path d="m6.34 17.66-1.41 1.41"></path>
-                            <path d="m19.07 4.93-1.41 1.41"></path>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="moon-icon">
-                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-
-            <!-- Mobile Navigation -->
-            <div class="nav-mobile">
-                <button class="hamburger" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <!-- Desktop Navigation -->
+        <ul class="nav-desktop">
+            <li><a href="#about" class="nav-link active">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#experience" class="nav-link">Skills & Experience</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li>
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="sun-icon">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="moon-icon">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
                 </button>
-                <div class="mobile-menu">
-                    <ul>
-                        <li><a href="#about" class="nav-link active">About</a></li>
-                        <li><a href="#projects" class="nav-link">Projects</a></li>
-                        <li><a href="#experience" class="nav-link">Experience</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                        <li>
-                            <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle theme">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="sun-icon">
-                                    <circle cx="12" cy="12" r="4"></circle>
-                                    <path d="M12 2v2"></path>
-                                    <path d="M12 20v2"></path>
-                                    <path d="m4.93 4.93 1.41 1.41"></path>
-                                    <path d="m17.66 17.66 1.41 1.41"></path>
-                                    <path d="M2 12h2"></path>
-                                    <path d="M20 12h2"></path>
-                                    <path d="m6.34 17.66-1.41 1.41"></path>
-                                    <path d="m19.07 4.93-1.41 1.41"></path>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="moon-icon">
-                                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                                </svg>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+            </li>
+        </ul>
+
+        <!-- Mobile Navigation -->
+        <div class="nav-mobile">
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-menu">
+                <ul>
+                    <li><a href="#about" class="nav-link active">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="sun-icon">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="moon-icon">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- About Page - IMPROVED LAYOUT -->
-    <section id="about" class="page active">
-        <div class="container">
-            <div class="about-content">
-                <div class="intro">
-                    <div class="profile-container">
-                        <div class="profile-image">
-                            <img src="pfp.jpg" alt="Justin Park Profile Picture">
-                        </div>
-                        <div>
-                            <h1>Justin Park</h1>
-                            <p class="subtitle">
-                                <span class="location-container">
-                                    HCC Student | Web Developer
-                                </span>
-                            </p>
-                            <p class="subtitle">
-                                <span class="location-container">
-                                    <span class="location-text" id="location-text"></span><span class="cursor"
-                                        id="cursor">|</span>
-                                </span>
-                            </p>
-                        </div>
+<!-- About Page - IMPROVED LAYOUT -->
+<section id="about" class="page active">
+    <div class="container">
+        <div class="about-content">
+            <div class="intro">
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <img src="pfp.jpg" alt="Justin Park Profile Picture">
                     </div>
-
-                    <div class="intro-text">
-                        <p>
-                            My name is Justin, and my interests lie in UX/UI Design, Human Centered Design, and
-                            Front-End
-                            Development.
+                    <div>
+                        <h1>Justin Park</h1>
+                        <p class="subtitle">
+                            <span class="location-container">
+                                HCC Student | Web Developer
+                            </span>
                         </p>
-                        <p>
-                            I'm currently working on further improving my skills in front-end development through
-                            projects and coursework.
-                            This website is one of the few projects I have developed. I am hoping to gain hands-on
-                            experience
-                            through co-ops and internships that let me focus on areas like front-end development,
-                            accessibility,
-                            and user-centered design to help make technology more intuitive and user-friendly.
+                        <p class="subtitle">
+                            <span class="location-container">
+                                <span class="location-text" id="location-text"></span><span class="cursor"
+                                    id="cursor">|</span>
+                            </span>
                         </p>
                     </div>
                 </div>
 
-                <div class="about-details">
-                    <div class="detail-card">
-                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                        <p>Rochester Institute of Technology<br>
-                            BS in Human Centered Computing<br>
-                            Expected Graduation: 2028</p>
-                    </div>
+                <div class="intro-text">
 
-                    <div class="detail-card">
-                        <h3><i class="fas fa-bullseye"></i> Focus Areas</h3>
-                        <p>UX/UI Design<br>
-                            Front-End Development<br>
-                            Human Centered Design<br>
-                            Accessibility<br>
-                            Helping Others</p>
-                    </div>
+                    <p>
+                        My name is Justin, and I'm constantly driven by a curiosity to understand the 'why' behind user
+                        behavior, which
+                        fuels my passion to learn more about these fields every day. I enjoy creating user-friendly
+                        and visually appealing digital experiences that prioritize the needs and preferences of users.
+                        My interests lie in UI/UX Design, Human Centered Design, and
+                        Website Development & Designing.
 
-                    <div class="detail-card">
-                        <h3><i class="fas fa-heart"></i> Interests</h3>
-                        <p>Music<br>
-                            Traveling<br>
-                            Snowboarding<br>
-                            Food & Fashion<br>
-                            Web Development<br>
-                            Graphic & UX/UI Design</p>
-                    </div>
+                    </p>
+                    <p>
+                        I'm currently a second year student at RIT working on further improving my skills in front-end
+                        development through
+                        projects and coursework.
+                        This website is a portfolio of the few projects I have developed so far. You will find projects
+                        that I have worked on, or collaborated with
+                        others to create. You will also find information about my skills, experience, and further
+                        interests.
+                        I am hoping to gain hands-on experience
+                        through co-ops and internships that let me focus on areas like front-end development,
+                        accessibility,
+                        and user-centered design to help make technology more intuitive and user-friendly.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-details">
+                <div class="detail-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <p>Rochester Institute of Technology<br>
+                        BS in Human Centered Computing<br>
+                        Expected Graduation: 2028</p>
                 </div>
 
-                <div class="contact-info">
-                    <h3>Contact Me</h3>
-                    <div class="social-links">
-                        <a href="mailto:parkjustin2006@gmail.com" class="social-link" target="_blank">
-                            <i class="fas fa-envelope social-icon"></i>
-                            <span class="social-text">Email</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/justin-park-78b6bb358/" class="social-link"
-                            target="_blank">
-                            <i class="fab fa-linkedin social-icon"></i>
-                            <span class="social-text">LinkedIn</span>
-                        </a>
-                        <a href="https://www.instagram.com/justin_parkk/" class="social-link" target="_blank">
-                            <i class="fab fa-instagram social-icon"></i>
-                            <span class="social-text">Instagram</span>
-                        </a>
-                    </div>
+                <div class="detail-card">
+                    <h3><i class="fas fa-bullseye"></i> Focus Areas</h3>
+                    <p>UX/UI Design<br>
+                        Front-End Development<br>
+                        Human Centered Design<br>
+                        Accessibility<br>
+                        Helping Others</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3><i class="fas fa-heart"></i> Interests</h3>
+                    <p>Music<br>
+                        Traveling<br>
+                        Snowboarding<br>
+                        Food & Fashion<br>
+                        Web Development<br>
+                        Graphic & UX/UI Design</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Contact Me</h3>
+                <div class="social-links">
+                    <a href="mailto:parkjustin2006@gmail.com" class="social-link" target="_blank">
+                        <i class="fas fa-envelope social-icon"></i>
+                        <span class="social-text">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/justin-park-78b6bb358/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin social-icon"></i>
+                        <span class="social-text">LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/justin_parkk/" class="social-link" target="_blank">
+                        <i class="fab fa-instagram social-icon"></i>
+                        <span class="social-text">Instagram</span>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Projects Page -->
-    <section id="projects" class="page">
-        <div class="container">
-            <div class="projects-content">
-                <div>
-                    <h2 class="section-title">My Projects</h2>
-                    <p class="section-subtitle">A collection of my recent work and personal projects</p>
+<!-- Projects Page -->
+<section id="projects" class="page">
+    <div class="container">
+        <div class="projects-content">
+            <div>
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">A collection of my recent work and personal projects</p>
 
-                    <div class="project-grid">
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3 class="project-title">Justin Park's Portfolio Website</h3>
-                                <span class="project-category">Personal Portfolio Website</span>
-                                <div class="project-status">
-                                    <i class="fas fa-check-circle"></i> Completed
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>
-                                    This website actively showcases the projects I'm currently working on, providing
-                                    real-time updates on my latest work, ideas, and creative progress. It's a living
-                                    portfolio that reflects my ongoing journey as a user centered designer, and
-                                    developer as a
-                                    human centered computing major.
-                                </p>
-                                <ul class="project-features">
-                                    <li>Short description about me, my focuses and career goals</li>
-                                    <li>Current projects I've been involved in—personal work, creative experiments, and
-                                        things I'm excited to share.</li>
-                                    <li>Highlights current skillsets and previous experiences</li>
-                                    <li>Customizable Dark & Light screen mode button</li>
-                                    <li>Overall showcase of my website development skills</li>
-                                </ul>
-                                <div class="project-tech">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">GitHub</span>
-                                </div>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://parkjustin0306.github.io/Justin-Park-Portfolio-Website/"
-                                    class="project-link" target="_blank" onclick="return false;">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    (This Website)
-                                </a>
-
-                                <a href="https://github.com/parkjustin0306/Justin-Park-Portfolio-Website"
-                                    class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i>
-                                </a>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Justin Park's Portfolio Website</h3>
+                            <span class="project-category">Personal Portfolio Website</span>
+                            <div class="project-status">
+                                <i class="fas fa-check-circle"></i> Completed
                             </div>
                         </div>
-
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3 class="project-title">EZ Reader</h3>
-                                <span class="project-category">Chrome Extension</span>
-                                <div class="project-status">
-                                    <i class="fas fa-check-circle"></i> Completed
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>
-                                    A Chrome extension that makes websites easier to read for people with dyslexia,
-                                    vision problems, and anyone who wants customizable websites. Focused on creating
-                                    an accessible and intuitive user experience.
-                                </p>
-                                <ul class="project-features">
-                                    <li>Improved readability with multiple font options</li>
-                                    <li>Customizable text spacing and color schemes</li>
-                                    <li>Magnifying glass feature</li>
-                                    <li>Color adjustable reading ruler</li>
-                                    <li>Simple UI for easy website customization</li>
-                                    <li>Responsive front-end components</li>
-                                </ul>
-                                <div class="project-tech">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Figma</span>
-                                    <span class="tech-tag">Chrome Extension API</span>
-                                </div>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://ez-reader.com/" class="project-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo
-                                </a>
+                        <div class="project-description">
+                            <p>
+                                This website actively showcases the projects I'm currently working on, providing
+                                real-time updates on my latest work, ideas, and creative progress. It's a living
+                                portfolio that reflects my ongoing journey as a user centered designer, and
+                                developer as a
+                                human centered computing major.
+                            </p>
+                            <ul class="project-features">
+                                <li>Short description about me, my focuses and career goals</li>
+                                <li>Current projects I've been involved in—personal work, creative experiments, and
+                                    things I'm excited to share.</li>
+                                <li>Highlights current skillsets and previous experiences</li>
+                                <li>Customizable Dark & Light screen mode button</li>
+                                <li>Overall showcase of my website development skills</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">GitHub</span>
                             </div>
                         </div>
+                        <div class="project-links">
+                            <a href="https://parkjustin0306.github.io/Justin-Park-Portfolio-Website/"
+                                class="project-link" target="_blank" onclick="return false;">
+                                <i class="fas fa-external-link-alt"></i>
+                                (This Website)
+                            </a>
+
+                            <a href="https://github.com/parkjustin0306/Justin-Park-Portfolio-Website"
+                                class="project-link" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">EZ Reader</h3>
+                            <span class="project-category">Chrome Extension</span>
+                            <div class="project-status">
+                                <i class="fas fa-check-circle"></i> Completed
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            <p>
+                                A Chrome extension that makes websites easier to read for people with dyslexia,
+                                vision problems, and anyone who wants customizable websites. Focused on creating
+                                an accessible and intuitive user experience.
+                            </p>
+                            <ul class="project-features">
+                                <li>Improved readability with multiple font options</li>
+                                <li>Customizable text spacing and color schemes</li>
+                                <li>Magnifying glass feature</li>
+                                <li>Color adjustable reading ruler</li>
+                                <li>Simple UI for easy website customization</li>
+                                <li>Responsive front-end components</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">Chrome Extension API</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ez-reader.com/" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
 
 
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3 class="project-title">Project Coming Soon</h3>
-                                <span class="project-category">Available Soon</span>
-                                <div class="project-status">
-                                    <i class="fas fa-spinner"></i> In Progress
-                                </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Project Coming Soon</h3>
+                            <span class="project-category">Available Soon</span>
+                            <div class="project-status">
+                                <i class="fas fa-spinner"></i> In Progress
                             </div>
-                            <div class="project-description">
-                                <p>
-                                    Currently in progress, will be coming soon!
-                                </p>
-                                <ul class="project-features">
-                                    <li>Available Soon</li>
-                                </ul>
-                                <div class="project-tech">
-                                    <span class="tech-tag">Coming Soon</span>
-                                </div>
+                        </div>
+                        <div class="project-description">
+                            <p>
+                                Currently in progress, will be coming soon!
+                            </p>
+                            <ul class="project-features">
+                                <li>Available Soon</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Coming Soon</span>
                             </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" onclick="return false;">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo (Coming Soon)
-                                </a>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank" onclick="return false;">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo (Coming Soon)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Experience Page -->
+<section id="experience" class="page">
+    <div class="container">
+        <div class="experience-content">
+            <div>
+                <div class="skills-section">
+                    <h2 class="section-title">Skills</h2>
+                    <p class="section-subtitle">Technologies and tools I work with</p>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-palette"></i> Design</h4>
+                            <div class="skill-list">
+                                UI/UX Design<br>
+                                Design Systems<br>
+                                User Research<br>
+                                Prototyping<br>
+                                Interaction Design
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4><i class="fas fa-tools"></i> Tools</h4>
+                            <div class="skill-list">
+                                GitHub<br>
+                                VS Code<br>
+                                AutoCAD<br>
+                                Figma<br>
+                                Adobe Photoshop & Illustrator
+
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4><i class="fas fa-code"></i> Development</h4>
+                            <div class="skill-list">
+                                HTML/CSS/JavaScript<br>
+                                Java, JavaFX<br>
+                                Python<br>
+                                Cursor
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey and key accomplishments</p>
 
-    <!-- Experience Page -->
-    <section id="experience" class="page">
-        <div class="container">
-            <div class="experience-content">
-                <div>
-                    <div class="skills-section">
-                        <h2 class="section-title">Skills</h2>
-                        <p class="section-subtitle">Technologies and tools I work with</p>
-
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h4><i class="fas fa-palette"></i> Design</h4>
-                                <div class="skill-list">
-                                    UI/UX Design<br>
-                                    Design Systems<br>
-                                    User Research<br>
-                                    Prototyping<br>
-                                    Interaction Design
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4><i class="fas fa-tools"></i> Tools</h4>
-                                <div class="skill-list">
-                                    GitHub<br>
-                                    VS Code<br>
-                                    AutoCAD<br>
-                                    Figma<br>
-                                    Adobe Photoshop & Illustrator
-
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4><i class="fas fa-code"></i> Development</h4>
-                                <div class="skill-list">
-                                    HTML/CSS/JavaScript<br>
-                                    Java, JavaFX<br>
-                                    Python<br>
-                                    Cursor
-
-                                </div>
-                            </div>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <h3 class="experience-name">Personal Projects</h3>
+                        <div class="experience-role">Self-Directed Learning</div>
+                        <div class="experience-bio">
+                            Developing personal projects to enhance technical skills and build a portfolio of work.
+                            Focus on creating accessible, user-friendly web applications.
+                        </div>
+                        <div class="experience-interests">
+                            Actively learning modern web technologies and design principles through hands-on project
+                            work.
                         </div>
                     </div>
 
-                    <h2 class="section-title">Experience</h2>
-                    <p class="section-subtitle">My professional journey and key accomplishments</p>
-
-                    <div class="experience-grid">
-                        <div class="experience-card">
-                            <h3 class="experience-name">Freelance</h3>
-                            <div class="experience-role">Web Developer · Part-time</div>
-                            <div class="experience-bio">
-                                Worked with peers and other web developers to create Chrome extensions and website
-                                projects. Focused on front-end web development, creating user interfaces and graphical
-                                user
-                                interactions.
-                            </div>
-                            <div class="experience-interests">
-                                Projects: Chrome extensions, Professional Websites, Portfolio Websites
-                            </div>
-                            <div class="experience-interests">
-                                Feb 2025 - Current · Remote
-                            </div>
-
+                    <div class="experience-card">
+                        <h3 class="experience-name">Trader Joe's</h3>
+                        <div class="experience-role">Crew Member · Part-time</div>
+                        <div class="experience-bio">
+                            Handled finances and produced hourly schedules for crew members. Provided excellent
+                            customer service,
+                            addressing product inquiries and resolving issues. Developed strong communication skills
+                            working with
+                            crew members and managers. Efficiently operated cash registers while organizing stock
+                            and managing
+                            expiring products.
                         </div>
-                        <div class="experience-card">
-                            <h3 class="experience-name">Trader Joe's</h3>
-                            <div class="experience-role">Crew Member · Part-time</div>
-                            <div class="experience-bio">
-                                Handled finances and produced hourly schedules for crew members. Provided excellent
-                                customer service,
-                                addressing product inquiries and resolving issues. Developed strong communication skills
-                                working with
-                                crew members and managers. Efficiently operated cash registers while organizing stock
-                                and managing
-                                expiring products.
-                            </div>
-                            <div class="experience-interests">
-                                Oct 2023 - Jul 2024 · 10 mos · Paramus, New Jersey · On-site
-                            </div>
+                        <div class="experience-interests">
+                            Oct 2023 - Jul 2024 · 10 mos · Paramus, New Jersey · On-site
                         </div>
+                    </div>
 
-                        <div class="experience-card">
-                            <h3 class="experience-name">ShopRite</h3>
-                            <div class="experience-role">Store Cashier · Part-time</div>
-                            <div class="experience-bio">
-                                Managed financial transactions as cashier and assisted with stocking operations.
-                                Supported managers
-                                with various tasks and maintained efficient checkout operations. Enhanced customer
-                                experience through
-                                positive engagement and created a welcoming store environment through excellent service
-                                and grocery bagging assistance.
-                            </div>
-                            <div class="experience-interests">
-                                Feb 2023 - Jun 2023 · 5 mos · Paramus, New Jersey · On-site
-                            </div>
+                    <div class="experience-card">
+                        <h3 class="experience-name">ShopRite</h3>
+                        <div class="experience-role">Store Cashier · Part-time</div>
+                        <div class="experience-bio">
+                            Managed financial transactions as cashier and assisted with stocking operations.
+                            Supported managers
+                            with various tasks and maintained efficient checkout operations. Enhanced customer
+                            experience through
+                            positive engagement and created a welcoming store environment through excellent service
+                            and grocery bagging assistance.
                         </div>
-
-
+                        <div class="experience-interests">
+                            Feb 2023 - Jun 2023 · 5 mos · Paramus, New Jersey · On-site
+                        </div>
                     </div>
                 </div>
 
 
-
             </div>
         </div>
-    </section>
-
-    <!-- Contact Page -->
-    <section id="contact" class="page">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">I'm always interested in new opportunities and collaborations</p>
-
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>Send me a message directly</p>
-                        <a href="mailto:parkjustin2006@gmail.com" class="contact-link">parkjustin2006@gmail.com</a>
-                    </div>
 
 
-                    <div class="contact-method">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me professionally</p>
-                        <a href="https://www.linkedin.com/in/justin-park-78b6bb358/" class="contact-link"
-                            target="_blank">View Profile</a>
-                    </div>
 
-                    <div class="contact-method">
-                        <i class="fab fa-instagram"></i>
-                        <h3>Instagram</h3>
-                        <p>Follow up with me outside of work</p>
-                        <a href="https://www.instagram.com/justin_parkk/" class="contact-link" target="_blank">Follow
-                            Me</a>
-                    </div>
+    </div>
+    </div>
+</section>
+
+<!-- Contact Page -->
+<section id="contact" class="page">
+    <div class="container">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">I'm always interested in new opportunities and collaborations</p>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>Send me a message directly</p>
+                    <a href="mailto:parkjustin2006@gmail.com" class="contact-link">parkjustin2006@gmail.com</a>
+                </div>
+
+
+                <div class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me professionally</p>
+                    <a href="https://www.linkedin.com/in/justin-park-78b6bb358/" class="contact-link"
+                        target="_blank">View Profile</a>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>Follow up with me outside of work</p>
+                    <a href="https://www.instagram.com/justin_parkk/" class="contact-link" target="_blank">Follow
+                        Me</a>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <p style="opacity: 0.7; font-size: 1.1rem; margin-top: 100px;">
-                    Always looking for new challenges and opportunities to create and design seamless digital
-                    interactions.
-                </p>
-            </div>
         </div>
-    </section>
+        <div style="text-align: center; margin-top: 40px;">
+            <p style="opacity: 0.7; font-size: 1.1rem; margin-top: 100px;">
+                Always looking for new challenges and opportunities to create and design seamless digital
+                interactions.
+            </p>
+        </div>
+    </div>
+</section>
 
+<section class="last-updated">
+    <div>Last Updated October 2025</div>
+</section>
+<!-- Footer -->
+<footer>
+    <div>2025 &copy; Justin Park</div>
+</footer>
 
-    <!-- Footer -->
-    <footer>
-        <div>Justin Park &copy; 2025</div>
-    </footer>
+<script>
+    // Simple page navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
 
-    <script>
-        // Simple page navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
 
-                const targetId = link.getAttribute('href').substring(1);
+            // Update active nav link
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
 
-                // Update active nav link
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                // Show target page
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                    if (page.id === targetId) {
-                        page.classList.add('active');
-                    }
-                });
-
-                // Scroll to top of the page
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-
-                // Close mobile menu if open
-                if (window.innerWidth <= 768) {
-                    const hamburger = document.querySelector('.hamburger');
-                    const mobileMenu = document.querySelector('.mobile-menu');
-                    hamburger.classList.remove('active');
-                    mobileMenu.classList.remove('active');
+            // Show target page
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === targetId) {
+                    page.classList.add('active');
                 }
             });
-        });
 
-        // Add fade-in animation to sections when they become active
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
+            // Scroll to top of the page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.project-card, .experience-card, .skill-category, .detail-card').forEach(item => {
-            observer.observe(item);
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                const hamburger = document.querySelector('.hamburger');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
         });
+    });
 
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+    // Add fade-in animation to sections when they become active
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
 
-        themeToggle.addEventListener('click', function () {
+    document.querySelectorAll('.project-card, .experience-card, .skill-category, .detail-card').forEach(item => {
+        observer.observe(item);
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+
+    themeToggle.addEventListener('click', function () {
+        document.body.classList.toggle('white-mode');
+    });
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', function () {
             document.body.classList.toggle('white-mode');
         });
+    }
 
-        if (mobileThemeToggle) {
-            mobileThemeToggle.addEventListener('click', function () {
-                document.body.classList.toggle('white-mode');
-            });
-        }
+    // Mobile menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-        // Mobile menu functionality
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', function () {
-                this.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-        }
-
-        // Location typing animation - only the location part changes
-        const locations = [
-            "NJ & NY Based",
-            "Paramus, NJ",
-            "Rochester, NY"
-        ];
-
-        let locationIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        let deletingSpeed = 50;
-        let pauseTime = 1500;
-
-        function typeLocation() {
-            const currentLocation = locations[locationIndex];
-            const locationElement = document.getElementById('location-text');
-            const cursorElement = document.getElementById('cursor');
-
-            if (isDeleting) {
-                // Deleting text
-                locationElement.textContent = currentLocation.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = deletingSpeed;
-            } else {
-                // Typing text
-                locationElement.textContent = currentLocation.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100;
-            }
-
-            // Make sure cursor is visible
-            cursorElement.style.display = 'inline-block';
-
-            // Check if we've finished typing the current location
-            if (!isDeleting && charIndex === currentLocation.length) {
-                // Pause at the end of typing
-                typingSpeed = pauseTime;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                // Move to next location after deleting
-                isDeleting = false;
-                locationIndex = (locationIndex + 1) % locations.length;
-            }
-
-            setTimeout(typeLocation, typingSpeed);
-        }
-
-        // Start the typing animation after page loads
-        window.addEventListener('load', () => {
-            setTimeout(typeLocation, 1000);
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         });
-    </script>
+    }
+
+    // Location typing animation - only the location part changes
+    const locations = [
+        "NJ & NY Based",
+        "Paramus, NJ",
+        "Rochester, NY"
+    ];
+
+    let locationIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let deletingSpeed = 50;
+    let pauseTime = 1500;
+
+    function typeLocation() {
+        const currentLocation = locations[locationIndex];
+        const locationElement = document.getElementById('location-text');
+        const cursorElement = document.getElementById('cursor');
+
+        if (isDeleting) {
+            // Deleting text
+            locationElement.textContent = currentLocation.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = deletingSpeed;
+        } else {
+            // Typing text
+            locationElement.textContent = currentLocation.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        // Make sure cursor is visible
+        cursorElement.style.display = 'inline-block';
+
+        // Check if we've finished typing the current location
+        if (!isDeleting && charIndex === currentLocation.length) {
+            // Pause at the end of typing
+            typingSpeed = pauseTime;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next location after deleting
+            isDeleting = false;
+            locationIndex = (locationIndex + 1) % locations.length;
+        }
+
+        setTimeout(typeLocation, typingSpeed);
+    }
+
+    // Start the typing animation after page loads
+    window.addEventListener('load', () => {
+        setTimeout(typeLocation, 1000);
+    });
+</script>
 </body>
 
 </html>
