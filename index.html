@@ -342,6 +342,12 @@
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
+        /* Prevent scrolling during loading */
+        body.loading {
+            overflow: hidden;
+            height: 100vh;
+        }
+
         #vanta-canvas-loading {
             position: fixed;
             top: 0;
@@ -1316,7 +1322,7 @@
     </style>
 </head>
 
-<body>
+<body class="loading">
 <div class="loading-screen" id="loadingScreen">
     <div id="vanta-canvas-loading"></div>
     <div class="loading-text" style="animation-delay: 0s;">Hello</div>
@@ -1613,6 +1619,10 @@
         }
 
         window.addEventListener('load', () => {
+            // Prevent scrolling during loading and scroll to top
+            document.body.classList.add('loading');
+            window.scrollTo(0, 0);
+            
             // Initialize Vanta on loading screen
             initLoadingVanta();
 
@@ -1620,6 +1630,10 @@
                 const loadingScreen = document.getElementById('loadingScreen');
                 if (loadingScreen) {
                     loadingScreen.classList.add('hidden');
+                    // Re-enable scrolling
+                    document.body.classList.remove('loading');
+                    // Ensure we're at the top of the about section
+                    window.scrollTo(0, 0);
                     // Clean up loading Vanta effect
                     if (loadingVantaEffect) {
                         loadingVantaEffect.destroy();
