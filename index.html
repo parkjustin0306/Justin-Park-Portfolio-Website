@@ -622,7 +622,7 @@
         .tech-tag {
             font-size: 11px;
             color: #ffffff;
-            background: #a0d4a0;
+            background: #638576;
             padding: 6px 12px;
             border-radius: 20px;
             font-weight: 500;
@@ -1005,65 +1005,293 @@
 
         /* Mobile */
         @media (max-width: 768px) {
+            /* Header - Stack vertically on mobile */
             header {
-                width: 200px;
-                padding: 40px 20px;
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
+            .profile-section {
+                padding: 20px 0;
+                margin-bottom: 20px;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-name {
+                font-size: 16px;
+            }
+
+            .profile-title {
+                font-size: 10px;
+            }
+
+            .typing-location {
+                font-size: 10px;
+            }
+
+            /* Navigation - Horizontal on mobile */
+            nav {
+                padding: 0;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 8px 12px;
+                margin: 0;
+            }
+
+            .nav-links a:hover {
+                padding: 8px 12px;
+                margin: 0;
+            }
+
+            .nav-links a:after {
+                bottom: 4px;
+            }
+
+            .section-title::after {
+                bottom: -15px;
+            }
+
+            /* Main content - Remove left margin */
             main {
-                margin-left: 200px;
+                margin-left: 0;
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
-            .header-name {
-                font-size: 24px;
-            }
-
-            .header-title {
-                font-size: 14px;
-            }
-
+            /* Sections */
             section {
-                padding: 80px 20px;
+                padding: 40px 0;
                 min-height: auto;
             }
 
             section:first-child {
-                padding-top: 100px;
+                padding-top: 40px;
             }
 
-            .nav-links {
-                gap: 30px;
-            }
-
-            .nav-links a {
-                font-size: 14px;
-            }
-
-            .name {
-                font-size: 28px;
-            }
-
-            .subtitle {
-                font-size: 15px;
-            }
-
-            .bio {
+            /* About section */
+            #about .bio {
+                margin-left: 0;
+                padding-left: 20px;
+                padding-right: 20px;
                 font-size: 15px;
             }
 
             .section-title {
-                font-size: 26px;
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            /* Projects */
+            .project-item {
+                margin-left: 0;
+                padding: 20px;
+                margin-bottom: 20px;
             }
 
             .project-name {
+                font-size: 22px;
+            }
+
+            .project-description {
+                font-size: 14px;
+            }
+
+            .project-features li {
+                font-size: 13px;
+            }
+
+            .project-tech {
+                gap: 8px;
+            }
+
+            .tech-tag {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .project-link {
+                font-size: 13px;
+                padding: 12px 20px 12px 36px;
+                width: fit-content;
+            }
+
+            .project-link.github {
+                width: 48px;
+                padding: 12px;
+                text-indent: -9999px;
+                overflow: hidden;
+            }
+
+            .project-link.github:before {
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            /* Experience & Skills */
+            .exp-items-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .exp-company {
+                font-size: 18px;
+            }
+
+            .exp-role {
+                font-size: 14px;
+            }
+
+            .exp-list li {
+                font-size: 14px;
+            }
+
+            .exp-footer {
+                font-size: 12px;
+            }
+
+            /* Contact */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            #contact .section-title {
+                margin-left: 0;
+                left: 0;
+                transform: none;
+                text-align: center;
+            }
+
+            .contact-item {
+                margin: 10px 0;
+            }
+
+            .contact-item h3 {
+                font-size: 16px;
+            }
+
+            .contact-item .contact-icon {
+                font-size: 32px;
+            }
+
+            .contact-item .contact-desc {
+                font-size: 14px;
+            }
+
+            .contact-item a {
+                font-size: 14px;
+            }
+
+            /* Info grid */
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .info-card h3 {
+                font-size: 14px;
+            }
+
+            .info-card p {
+                font-size: 14px;
+            }
+
+            .info-list li {
+                font-size: 14px;
+            }
+
+            /* Footer */
+            footer {
+                margin-left: 0;
+                padding: 40px 20px 20px;
+            }
+
+            .last-updated {
+                padding: 20px 0 10px;
+            }
+
+            /* Loading screen */
+            .loading-text {
+                font-size: 48px;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-name {
+                font-size: 14px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+
+            main {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .section-title {
                 font-size: 20px;
             }
 
-            .info-grid,
-            .skills-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            .project-item {
+                padding: 15px;
+            }
+
+            .project-name {
+                font-size: 18px;
+            }
+
+            .bio {
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            .info-card {
+                padding: 15px;
+            }
+
+            .contact-item {
+                padding: 20px;
+            }
+
+            .loading-text {
+                font-size: 36px;
             }
         }
 
@@ -1477,6 +1705,11 @@
             const firstSection = sections[0];
             if (firstSection) {
                 firstSection.classList.add('active');
+            }
+            
+            // Scroll to top on mobile devices only
+            if (window.innerWidth <= 768) {
+                window.scrollTo(0, 0);
             }
         });
 </script>
