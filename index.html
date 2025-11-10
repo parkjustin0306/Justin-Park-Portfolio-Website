@@ -181,15 +181,7 @@
         }
 
         .nav-links a:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 8px;
-            width: 0;
-            height: 2px;
-            background-color: #ffffff;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: left;
+            content: none;
         }
 
         .nav-links a.active {
@@ -198,8 +190,7 @@
 
         .nav-links a:hover:after,
         .nav-links a.active:after {
-            width: 100%;
-            animation: sweep 2.0s ease-in-out infinite;
+            width: 0;
         }
 
         @keyframes sweep {
@@ -267,6 +258,64 @@
             max-width: 900px;
             margin-left: 0;
             margin-right: 0;
+        }
+
+        /* Photos (Gallery) */
+        #photos {
+            max-width: 1100px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Desktop: nudge photos grid 85px left; keep 15px right padding to match left gap */
+        @media (min-width: 769px) {
+            #photos .photos-grid { margin-left: -85px; padding-right: 15px; }
+        }
+
+        .gallery-intro {
+            margin: 0 0 24px 0;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* Strict order grid: 4 columns, preserves 1..N order */
+        .photos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .photo-card { position: relative; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+        .photo-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.22); box-shadow: 0 12px 28px rgba(0,0,0,0.28); }
+        .photo-card img { width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 4/5; }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 24px;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 88vh;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 9999px;
+            padding: 8px 12px;
+            cursor: pointer;
         }
 
         #about .bio {
@@ -535,6 +584,163 @@
             transition: color 0.5s ease;
         }
 
+        /* Globe Section */
+        .globe-section {
+            margin: 60px 0 60px 100px;
+            padding: 40px 40px 25px 40px; /* top right bottom left */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            max-width: 700px;
+        }
+
+        .globe-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .location-typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 16px;
+            background-color: #ffffff;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        .globe-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 0.82;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        #globe-canvas {
+            width: 65%;
+            max-width: 400px;
+            margin: -20px auto 0;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        #globe-canvas canvas {
+            cursor: grab;
+            position: relative;
+            z-index: 1;
+        }
+
+        #globe-canvas canvas:active {
+            cursor: grabbing;
+        }
+
+        .globe-locations {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 80px;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .location-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .location-info.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .location-info p {
+            font-size: 13px;
+            color: #ffffff;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .globe-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:hover:before {
+            left: 100%;
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
         /* Projects */
         .project-item {
             margin-bottom: 30px;
@@ -679,6 +885,19 @@
             background-repeat: no-repeat;
         }
 
+        .project-link.download:before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
         .project-link.github {
             width: 48px;
             padding: 12px;
@@ -698,6 +917,10 @@
 
         .project-link.external:hover:before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23638576' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3'/%3E%3C/svg%3E");
+        }
+
+        .project-link.download:hover:before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23638576' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E");
         }
 
         /* Experience */
@@ -1174,6 +1397,56 @@
                 transform: translate(-50%, -50%);
             }
 
+            /* Globe section */
+            .globe-section {
+                margin: 40px 0;
+                padding: 24px 16px 20px 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .globe-container {
+                aspect-ratio: auto;
+                width: 100%;
+            }
+
+            #globe-canvas {
+                width: 65%;
+                max-width: 160px;
+                margin: 0 auto 8px auto;
+                aspect-ratio: 1 / 1;
+            }
+
+            .globe-locations {
+                position: static;
+                transform: none;
+                width: 100%;
+                max-width: 340px;
+                height: auto;
+            }
+
+            .location-info {
+                position: relative;
+                opacity: 0;
+                transform: translateY(10px);
+                display: none;
+                padding: 14px;
+            }
+
+            .location-info.active {
+                opacity: 1;
+                transform: translateY(0);
+                display: block;
+            }
+
+            .globe-navigation {
+                position: static;
+                transform: none;
+                margin-top: 4px;
+            }
+
             /* Experience & Skills */
             .exp-items-grid,
             .skills-grid {
@@ -1202,6 +1475,10 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+
+            /* Photos - Mobile: 2 columns strict order */
+            .photos-grid { grid-template-columns: repeat(2, 1fr); padding-right: 15px; }
+            .photo-card img { aspect-ratio: 1/1; }
 
             #contact .section-title {
                 margin-left: 0;
@@ -1317,6 +1594,34 @@
             .loading-text {
                 font-size: 36px;
             }
+
+            /* Globe section mobile */
+            /* Photos - Responsive */
+            .photos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .photo-card img { aspect-ratio: 1/1; }
+
+            .location-info h4 {
+                font-size: 14px;
+            }
+
+            .location-info p {
+                font-size: 12px;
+            }
+
+            .globe-navigation {
+                gap: 8px;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 11px;
+                text-align: center;
+                min-width: 96px;
+            }
         }
 
     </style>
@@ -1344,6 +1649,7 @@
             <li><a href="#projects" class="nav-link">projects</a></li>
             <li><a href="#experience" class="nav-link">experience</a></li>
             <li><a href="#contact" class="nav-link">contact</a></li>
+            <li><a href="#photos" class="nav-link">photos</a></li>
         </ul>
     </nav>
 </header>
@@ -1366,6 +1672,40 @@
                         through co-ops and internships that let me focus on areas like front-end development, accessibility,
                         and user-centered design to help make technology more intuitive and user-friendly.
                     </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Globe Section -->
+                <div class="globe-section">
+                    <div class="globe-container">
+                        <div class="globe-locations">
+                            <div class="location-info" id="location-paramus">
+                                <h4>Paramus, NJ</h4>
+                                <p>My hometown and roots</p>
+                            </div>
+
+                            <div class="location-info" id="location-nyc">
+                                <h4>New York City, NY</h4>
+                                <p>Where dreams and opportunities converge</p>
+                            </div>
+                            
+                            <div class="location-info" id="location-rochester">
+                                <h4>Rochester, NY</h4>
+                                <p>Current home at RIT</p>
+                            </div>
+                            
+                            <div class="location-info" id="location-seoul">
+                                <h4>Seoul, South Korea</h4>
+                                <p>Cultural heritage and connections</p>
+                            </div>
+                        </div>
+                        <div id="globe-canvas"></div>
+                        <div class="globe-navigation">
+                            <button class="nav-btn" data-location="paramus">Paramus</button>
+                            <button class="nav-btn" data-location="nyc">NYC</button>
+                            <button class="nav-btn" data-location="rochester">Rochester</button>
+                            <button class="nav-btn" data-location="seoul">Seoul</button>
+                        </div>
                     </div>
                 </div>
 
@@ -1463,7 +1803,36 @@
                         <span class="tech-tag">Chrome Extension API</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://ez-reader.com/" target="_blank" class="project-link external">Live Demo</a>
+                        <a href="https://ez-reader.com/" target="_blank" class="project-link external">View Site</a>
+                        <a href="https://chromewebstore.google.com/detail/andfappmfejelcpnaocbdenoekppfjjj?utm_source=item-share-cb" target="_blank" class="project-link download">Download</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-category">Freelance Web Design</div>
+                        <h3 class="project-name">Colorblind Helper Website</h3>
+                        <span class="status completed">Completed</span>
+                    </div>
+                    <p class="project-description">
+                        Collaborated with a friend as a freelance web designer to build the marketing site for a Chrome
+                        extension that assists colorblind users with accessible color palettes and overlays.
+                    </p>
+                    <ul class="project-features">
+                        <li>Crafted a clean landing page highlighting extension benefits and accessibility impact</li>
+                        <li>Designed responsive layouts and color systems that align with WCAG guidance</li>
+                        <li>Integrated extension download prompts and feature callouts for quick user onboarding</li>
+                        <li>Overall showcase of my web design skills for freelance projects</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">Figma</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://colorblindhelperr-bit.github.io/colorblind-helper/" target="_blank" class="project-link external">View Site</a>
                     </div>
                 </div>
 
@@ -1476,6 +1845,16 @@
                     <p class="project-description">
                         Currently in progress, will be coming soon!
                     </p>
+        </div>
+    </section>
+
+    <section id="photos">
+                <h2 class="section-title">Photos</h2>
+                <p class="gallery-intro">A living gallery of my favorite moments and visuals. Click any photo to view larger.</p>
+                <div class="photos-grid" id="photoGrid"></div>
+                <div class="lightbox" id="lightbox">
+                    <button class="lightbox-close" id="lightboxClose">Close</button>
+                    <img id="lightboxImg" alt="photo" />
         </div>
     </section>
 
@@ -1668,15 +2047,15 @@
         });
 
         // Typing animation for location
-        const locations = ['NJ & NY Based', 'Paramus, NJ', 'New York City, NY', 'Rochester, NY', 'Seoul, South Korea'];
+        const typingLocations = ['NJ & NY Based'];
         const typingElement = document.getElementById('typingLocation');
-        let currentLocationIndex = 0;
+        let currentTypingLocationIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
         let typingSpeed = 100;
 
         function typeLocation() {
-            const currentLocation = locations[currentLocationIndex];
+            const currentLocation = typingLocations[currentTypingLocationIndex];
             
             if (!isDeleting && currentCharIndex <= currentLocation.length) {
                 typingElement.innerHTML = currentLocation.substring(0, currentCharIndex) + '<span class="typing-cursor"></span>';
@@ -1688,7 +2067,7 @@
                 setTimeout(typeLocation, 50);
             } else if (isDeleting && currentCharIndex < 0) {
                 isDeleting = false;
-                currentLocationIndex = (currentLocationIndex + 1) % locations.length;
+                currentTypingLocationIndex = (currentTypingLocationIndex + 1) % typingLocations.length;
                 setTimeout(typeLocation, 500);
             } else if (!isDeleting && currentCharIndex > currentLocation.length) {
                 setTimeout(() => {
@@ -1730,6 +2109,269 @@
             });
         });
 
+        // Globe functionality using COBE
+        let cobeGlobe = null;
+        let currentLocationIndex = 0;
+        let isGlobeRotating = true;
+            let phi = 0; // horizontal rotation
+            let theta = 0.3; // slight tilt
+            let pointerInteracting = null;
+            let pointerInteractionMovement = 0;
+            const MOVEMENT_DAMPING = 800; // Reduced damping for more responsive rotation
+            let r = 0; // rotation accumulator for smooth interaction
+
+        // Location card typing animation
+        let cardTypingElement = null;
+        let cardCurrentCharIndex = 0;
+        let cardIsDeleting = false;
+        let cardTypingSpeed = 100;
+        let cardFullText = '';
+
+        // Location data with precise coordinates
+        const globeLocations = [
+            { id: 'paramus', name: 'Paramus, NJ', lat: 40.9444, lng: -74.0757, phiOffset: -0.15, desc: 'My hometown and roots' },
+            { id: 'nyc', name: 'New York City, NY', lat: 40.7128, lng: -74.0060, phiOffset: -0.15, desc: 'Where dreams and opportunities converge' },
+            { id: 'rochester', name: 'Rochester, NY', lat: 43.1566, lng: -77.6088, phiOffset: -0.15, desc: 'Current home at RIT' },
+            { id: 'seoul', name: 'Seoul, South Korea', lat: 37.5665, lng: 126.9780, phiOffset: -Math.PI / 2, desc: 'Cultural heritage and connections' }
+        ];
+
+        function initGlobe() {
+            const container = document.getElementById('globe-canvas');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const canvas = document.createElement('canvas');
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.opacity = '0';
+            canvas.style.transition = 'opacity 500ms';
+            container.appendChild(canvas);
+            
+            // Set opacity to 1 after a short delay for smooth entrance
+            setTimeout(() => {
+                canvas.style.opacity = '1';
+            }, 0);
+
+            // Create markers - all 4 locations with larger, more visible pins
+            const markers = globeLocations.map(loc => ({ location: [loc.lat, loc.lng], size: 0.06 }));
+
+            // Initialize COBE globe - using Skypack CDN
+            if (typeof window.createGlobe === 'undefined') {
+                console.error('createGlobe is not defined. Make sure COBE library loaded.');
+                return;
+            }
+            
+            console.log('Creating COBE globe...');
+            
+            // Set initial canvas size
+            let width = container.offsetWidth;
+            // Ensure minimum width if container hasn't rendered yet
+            if (width === 0) {
+                width = 800;
+            }
+            canvas.width = width * 2;
+            canvas.height = width * 2;
+            
+            cobeGlobe = window.createGlobe(canvas, {
+                devicePixelRatio: 2,
+                width: width * 2,
+                height: width * 2,
+                phi: phi,
+                theta: theta,
+                dark: 0,
+                diffuse: 0.4,
+                mapSamples: 16000,
+                mapBrightness: 1.2,
+                baseColor: [1, 1, 1],
+                markerColor: [251 / 255, 100 / 255, 21 / 255],
+                glowColor: [1, 1, 1],
+                markers: markers,
+                onRender: (state) => {
+                    // Smooth rotation when user interacts (left-right dragging)
+                    // Apply damping to r for smooth deceleration
+                    r *= 0.96; // Slightly less damping for smoother interaction
+                    state.phi = phi + r;
+                }
+            });
+            console.log('COBE globe created successfully!');
+
+            // Handle resize - COBE automatically handles canvas sizing
+            const resize = () => {
+                width = container.offsetWidth;
+                if (width > 0) {
+                    canvas.width = width * 2;
+                    canvas.height = width * 2;
+                }
+            };
+            
+            resize();
+            window.addEventListener('resize', resize);
+
+            const breakpointQuery = window.matchMedia('(max-width: 768px)');
+            const handleBreakpointChange = () => {
+                requestAnimationFrame(resize);
+            };
+            if (breakpointQuery.addEventListener) {
+                breakpointQuery.addEventListener('change', handleBreakpointChange);
+            } else if (breakpointQuery.addListener) {
+                breakpointQuery.addListener(handleBreakpointChange);
+            }
+            
+            // Pointer interaction handlers
+            const updatePointerInteraction = (value) => {
+                pointerInteracting = value;
+                if (canvas) {
+                    canvas.style.cursor = value !== null ? "grabbing" : "grab";
+                }
+            };
+            
+            const updateMovement = (clientX) => {
+                if (pointerInteracting !== null) {
+                    const delta = clientX - pointerInteracting;
+                    pointerInteractionMovement = delta;
+                    // More responsive horizontal rotation (left-right dragging)
+                    // Accumulate rotation in r for smooth continuous movement
+                    r = r + delta / MOVEMENT_DAMPING;
+                    // Update pointerInteracting to current position for next delta calculation
+                    pointerInteracting = clientX;
+                }
+            };
+            
+            canvas.addEventListener('pointerdown', (e) => {
+                pointerInteracting = e.clientX;
+                updatePointerInteraction(e.clientX);
+            });
+            
+            canvas.addEventListener('pointerup', () => {
+                updatePointerInteraction(null);
+            });
+            
+            canvas.addEventListener('pointerout', () => {
+                updatePointerInteraction(null);
+            });
+            
+            canvas.addEventListener('mousemove', (e) => {
+                updateMovement(e.clientX);
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                if (e.touches[0]) {
+                    updateMovement(e.touches[0].clientX);
+                }
+            });
+            
+            // Set initial cursor
+            canvas.style.cursor = "grab";
+            
+            showLocation(0);
+        }
+
+        function typeLocationCard() {
+            if (!cardTypingElement || !cardFullText) return;
+            
+            if (!cardIsDeleting && cardCurrentCharIndex <= cardFullText.length) {
+                cardTypingElement.innerHTML = cardFullText.substring(0, cardCurrentCharIndex) + '<span class="location-typing-cursor"></span>';
+                cardCurrentCharIndex++;
+                setTimeout(typeLocationCard, 100); // Same speed as nav typing
+            } else if (cardIsDeleting && cardCurrentCharIndex >= 0) {
+                cardTypingElement.innerHTML = cardFullText.substring(0, cardCurrentCharIndex) + '<span class="location-typing-cursor"></span>';
+                cardCurrentCharIndex--;
+                setTimeout(typeLocationCard, 50);
+            } else if (cardIsDeleting && cardCurrentCharIndex < 0) {
+                cardIsDeleting = false;
+                // Don't continue typing - stop here since it's triggered by user click only
+                cardTypingElement.innerHTML = cardFullText;
+                cardTypingElement = null;
+            } else if (!cardIsDeleting && cardCurrentCharIndex > cardFullText.length) {
+                // Show complete text without cycling
+                cardTypingElement.innerHTML = cardFullText;
+                cardTypingElement = null;
+            }
+        }
+
+        function startCardTyping(element, text) {
+            // Stop any existing typing animation
+            cardTypingElement = null;
+            
+            // Set up new typing animation
+            cardTypingElement = element;
+            cardFullText = text;
+            cardCurrentCharIndex = 0;
+            cardIsDeleting = false;
+            
+            // Start typing
+            typeLocationCard();
+        }
+
+        function showLocation(index, startTyping = false) {
+            currentLocationIndex = index;
+            
+            // Clear any existing typing animation
+            document.querySelectorAll('.location-info h4').forEach(h4 => {
+                const locationData = globeLocations.find(loc => h4.parentElement.id === `location-${loc.id}`);
+                if (locationData) {
+                    h4.innerHTML = locationData.name;
+                }
+            });
+            
+            // Only start typing animation if explicitly requested (user button click)
+            if (startTyping) {
+                const activeLocationInfo = document.getElementById(`location-${globeLocations[index].id}`);
+                const activeH4 = activeLocationInfo.querySelector('h4');
+                startCardTyping(activeH4, globeLocations[index].name);
+            }
+            
+            // COBE renders markers; no per-pin updates necessary here
+            
+            // Show location info
+            document.querySelectorAll('.location-info').forEach(info => {
+                info.classList.remove('active');
+            });
+            document.getElementById(`location-${globeLocations[index].id}`).classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-location="${globeLocations[index].id}"]`).classList.add('active');
+            
+            // Smooth rotation to show location using COBE
+                const location = globeLocations[index];
+            // Convert longitude directly to phi (horizontal rotation) - no +90 offset needed
+            const targetPhi = (location.lng + 90) * (Math.PI / 180) + (location.phiOffset || 0);
+            const targetTheta = (90 - location.lat) * (Math.PI / 180); // Convert latitude to theta (vertical tilt)
+            const duration = 1200;
+            const startPhi = phi;
+            const startTheta = theta;
+                const startTime = Date.now();
+            isGlobeRotating = false;
+            (function animateToLocation() {
+                    const elapsed = Date.now() - startTime;
+                const t = Math.min(elapsed / duration, 1);
+                const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+                phi = startPhi + (targetPhi - startPhi) * ease;
+                theta = startTheta + (targetTheta - startTheta) * ease;
+                if (t < 1) requestAnimationFrame(animateToLocation);
+                else setTimeout(() => { isGlobeRotating = true; }, 1200);
+            })();
+        }
+
+        // Navigation button handlers
+        function setupGlobeNavigation() {
+            document.querySelectorAll('.nav-btn').forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const locationId = btn.getAttribute('data-location');
+                    const locationIndex = globeLocations.findIndex(loc => loc.id === locationId);
+                    if (locationIndex !== -1) {
+                        showLocation(locationIndex, true); // Enable typing animation for button clicks
+                    }
+                });
+            });
+
+            // No auto-rotation - globe only changes when user clicks buttons
+            // Globe continues to spin slowly but doesn't change active locations
+        }
+
         // Show the first section immediately
         window.addEventListener('load', () => {
             typeLocation();
@@ -1739,11 +2381,76 @@
                 firstSection.classList.add('active');
             }
             
+            // Initialize globe after page load and COBE module loads
+            const initGlobeWhenReady = () => {
+                if (typeof window.createGlobe === 'undefined') {
+                    console.log('Waiting for COBE module to load...');
+                    setTimeout(initGlobeWhenReady, 100);
+                    return;
+                }
+                console.log('Initializing globe, createGlobe available:', typeof window.createGlobe);
+                initGlobe();
+                setupGlobeNavigation();
+            };
+            initGlobeWhenReady();
+
+            // Build Photos masonry dynamically from images/img1..img32 (ordered)
+            const photoSources = Array.from({ length: 32 }, (_, i) => `images/img${i + 1}.jpg`);
+
+            const grid = document.getElementById('photoGrid');
+            if (grid) {
+                photoSources.forEach(src => {
+                    const item = document.createElement('div');
+                    item.className = 'photo-card';
+                    const img = document.createElement('img');
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    // Try .jpg first, fall back to .png if not found
+                    img.src = src;
+                    img.onerror = function handleError() {
+                        const png = src.replace(/\.jpg$/i, '.png');
+                        if (img.src !== png) {
+                            img.onerror = null;
+                            img.src = png;
+                        }
+                    };
+                    img.alt = 'Photo';
+                    item.appendChild(img);
+                    grid.appendChild(item);
+                });
+            }
+
+            // Lightbox handlers
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            if (grid && lightbox && lightboxImg && lightboxClose) {
+                grid.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (target && target.tagName === 'IMG') {
+                        lightboxImg.src = target.src;
+                        lightbox.classList.add('active');
+                    }
+                });
+                lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) lightbox.classList.remove('active');
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') lightbox.classList.remove('active');
+                });
+            }
+            
             // Scroll to top on mobile devices only
             if (window.innerWidth <= 768) {
                 window.scrollTo(0, 0);
             }
         });
+</script>
+
+<script type="module">
+    import createGlobe from 'https://cdn.skypack.dev/cobe';
+    window.createGlobe = createGlobe;
 </script>
 </body>
 
