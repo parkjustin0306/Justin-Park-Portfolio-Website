@@ -91,7 +91,6 @@
       display: none;
     }
 
-    /* --- SIGNATURE REPLACES NAME (big, hover → text) --- */
     .signature-container {
         margin-top: -300px;
         margin-left: -10px;
@@ -173,12 +172,12 @@
     }
 
     .nav-link.active {
-      color: #000000;
-      border-bottom-color: #000000;
+      color: #299686;
+      border-bottom-color: #299686;
     }
 
     .nav-link:hover {
-      color: #000000;
+      color: #299686;
       padding-left: 6px;
     }
 
@@ -213,11 +212,11 @@
     }
 
     .section-header span {
-      background: #e8e0d9;
+      background: #299686;
       padding: 4px 12px;
       font-size: 15px;
       border-radius: 30px;
-      color: #1a1a1a;
+      color: #fffbe4;
       font-weight: 400;
     }
 
@@ -357,9 +356,8 @@
       align-self: flex-start;
     }
 
-    /* --- BRITISH RACING GREEN CHECK ICON (CHANGE #1) --- */
     .status-badge .fa-check-circle {
-      color: #289740;
+      color: #299686;
     }
 
     .project-desc {
@@ -408,8 +406,8 @@
     }
 
     .project-link:hover {
-      border-bottom-color: #000000;
-      color: #000000;
+      border-bottom-color: #299686;
+      color: #299686;
     }
 
     /* --- EXPERIENCE / SKILLS --- */
@@ -426,6 +424,31 @@
       border-radius: 20px;
       padding: 28px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* Add smooth transition to experience cards */
+    .exp-card {
+      transition: all 0.25s ease;
+    }
+
+    /* Lift effect on hover for experience cards */
+    .exp-card:hover {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.04);
+    }
+
+    /* --- SKILL CARDS: ADD SAME HOVER ANIMATION AS PROJECTS & EXPERIENCE --- */
+    .skill-card {
+      transition: all 0.25s ease;
+    }
+
+    .skill-card:hover {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.04);
     }
 
     .exp-company {
@@ -506,7 +529,7 @@
       background: #f9f5f1;
       padding: 22px 28px;
       border-radius: 24px;
-      border-left: 4px solid #7a7a7a;
+      border-left: 4px solid #299686;
     }
 
     .location-info h4 {
@@ -542,8 +565,8 @@
 
     .nav-btn-sm.active, .nav-btn-sm:hover {
       background: #eae2db;
-      border-color: #000000;
-      color: #000000;
+      border-color: #299686;
+      color: #2e2e2e;
     }
 
     /* --- ABOUT ME SECTION --- */
@@ -599,21 +622,25 @@
       border-radius: 24px;
       padding: 32px 24px;
       text-align: center;
-      transition: background 0.2s;
+      transition: all 0.25s ease; /* changed from background-only to all for smooth lift */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .contact-item:hover {
       background: #faf6f2;
+      border-color: rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.04);
     }
 
     .contact-icon {
       font-size: 36px;
-      color: #3a3a3a;
+      color: #299686;
       margin-bottom: 16px;
     }
 
     .contact-item h3 {
-      color: #000000;
+      color: #3c3c3c;
       font-size: 20px;
       margin-bottom: 10px;
     }
@@ -626,7 +653,7 @@
       font-size: 15px;
     }
 
-    .contact-item a:hover { color: #000; border-bottom-color: #000; }
+    .contact-item a:hover { color: #299686; border-bottom-color: #299686; }
 
     /* Make Portfolio screenshot always visible (no hover needed) */
     .project-card:nth-child(3) .project-preview .preview-image {
@@ -812,6 +839,7 @@
       /* Reduce font sizes slightly for better reading */
       .section-header {
         font-size: 28px;
+        
       }
       .project-title {
         font-size: 22px;
@@ -967,7 +995,7 @@
             My name is Justin, and I'm constantly driven by a curiosity to understand the 'why' behind user behavior, which fuels my passion to learn more about these fields every day. I enjoy creating user-friendly and visually appealing digital experiences that prioritize the needs and preferences of users. My interests lie in UI/UX Design, Human Centered Design, and Website Development and Designing.
           </p>
           <p>
-            I'm currently a second year student at RIT working on further improving my skills in front-end development through projects and coursework. This website is a portfolio of the few projects I have developed so far, as well as projects that I have collaborated with others to create. Additionally you will also find information about my skills, experience, and further interests. I am passionate about gaining hands-on experience through co-ops and internships in areas such as UI/UX design, accessibility, and user-centered design, where I can help shape technology that feels intuitive, inclusive, and easy to use.
+            I’m a second-year student at Rochester Institute of Technology focused on UI/UX design and human-centered computing. Through coursework and hands-on projects, I explore how thoughtful design, accessibility, and interaction principles shape meaningful digital experiences. This portfolio highlights both individual and collaborative projects that reflect my approach to designing intuitive, inclusive, and user-focused interfaces. I am especially interested in co-ops and internships where I can contribute to creating technology that prioritizes usability, clarity, and real human needs.
           </p>
         </div>
         <!-- GLOBE SECTION MOVED HERE - right under the bio text -->
@@ -1004,6 +1032,7 @@
                   <li>Accessible web tools (EZ Reader, Colorblind Helper)</li>
                   <li>Portfolio & Design Systems</li>
                 </ul>
+                <div class="exp-footer">NJ & Rochester · Remote</div>
               </div>
             <div class="exp-card">
               <div class="exp-company">Trader Joe's</div>
