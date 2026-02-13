@@ -656,13 +656,166 @@
       .signature-img { max-width: 240px; }
     }
 
+    /* ========== MOBILE-FRIENDLY OVERRIDES (ONLY FOR SCREENS ≤ 768px) ========== */
+    /* Desktop layout remains untouched – only these styles kick in on mobile */
     @media (max-width: 768px) {
-      .site-wrapper { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; position: relative; padding: 40px 24px; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.07); }
-      .main-content { max-width: 100%; padding: 48px 24px; }
-      .project-grid, .exp-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
-      .globe-mini-section { flex-direction: column; align-items: flex-start; }
-      .signature-img { max-width: 220px; }
+      /* Switch to single column */
+      .site-wrapper {
+        flex-direction: column;
+      }
+
+      /* Sidebar: full width, no sticky, reset margins/padding, center text */
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 30px 20px !important;
+        margin: 0 !important;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        align-items: center;
+        text-align: center;
+      }
+
+      /* Reset signature positioning */
+      .signature-container {
+        margin: 0 0 20px 0 !important;
+        text-align: center;
+      }
+      .signature-wrapper {
+        display: inline-block;
+      }
+      .signature-img {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      /* Center badge line */
+      .badge-line {
+        justify-content: center;
+        margin-left: 0 !important;
+      }
+      .typing-location {
+        margin-left: 0 !important;
+        text-align: center;
+      }
+
+      /* Navigation: remove left margin, center items */
+      .nav-links {
+        margin: 20px 0 0 0 !important;
+        align-items: center;
+      }
+      .nav-link {
+        padding: 8px 0;
+        text-align: center;
+      }
+
+      /* Main content: full width, less padding */
+      .main-content {
+        max-width: 100%;
+        padding: 40px 20px !important;
+      }
+
+      /* Section headers: reset huge left margin, center on mobile */
+      .section-header {
+        margin-left: 0 !important;
+        text-align: center;
+        align-items: center;
+      }
+
+      /* Project grid: already 1fr from above, keep it */
+      .project-grid {
+        gap: 20px;
+      }
+
+      /* Project cards: adjust padding */
+      .project-card {
+        padding: 24px 18px;
+      }
+
+      /* About Me: reset huge left margins, center profile */
+      .about-profile {
+        margin-left: 0 !important;
+        align-items: center;
+      }
+      .about-profile img {
+        margin-left: 0 !important;
+        width: 160px;
+        height: 160px;
+      }
+
+      /* Globe section: stack and center */
+      .globe-mini-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 20px;
+        gap: 20px;
+      }
+      .globe-canvas-container {
+        width: 260px;
+        height: 180px;
+        margin: 0 auto;
+      }
+      .location-panel {
+        width: 100%;
+        text-align: center;
+      }
+      .location-info {
+        padding: 18px 20px;
+      }
+      .globe-nav {
+        justify-content: center;
+      }
+
+      /* ========== EXPERIENCE & SKILLS STACKING ========== */
+      /* Make exp-grid and skills-grid single column with proper spacing */
+      .exp-grid,
+      .skills-grid {
+        grid-template-columns: 1fr !important;  /* force one column */
+        gap: 20px !important;
+      }
+
+      /* Ensure each card takes full width and has consistent spacing */
+      .exp-card,
+      .skill-card {
+        width: 100%;
+        margin: 0;
+      }
+
+      /* ========== CONTACT CARDS STACKING ========== */
+      /* Make contact-grid single column with proper spacing */
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      .contact-item {
+        width: 100%;
+        margin: 0;
+      }
+
+      /* Center the intro paragraph */
+      #contact p[style*="margin-left: 190px"] {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+        text-align: center;
+      }
+
+      /* Footer note: stack vertically */
+      .footer-note {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      /* Reduce font sizes slightly for better reading */
+      .section-header {
+        font-size: 28px;
+      }
+      .project-title {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
